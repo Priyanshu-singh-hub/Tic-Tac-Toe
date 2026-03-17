@@ -36,6 +36,9 @@
         <h2 id="result"></h2>
 
         <button onclick="restartGame()">Restart</button>
+        <br><br>
+
+        <button id="installBtn" style="display:none;">Install Game</button>
     </center>
 
     <script src="script.js"></script>
@@ -47,6 +50,20 @@
                     console.log("Service Worker Registered");
                 });
         }
+    </script>
+
+    <script>
+        let deferredPrompt;
+
+        window.addEventListener("beforeinstallprompt", (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById("installBtn").style.display = "block";
+        });
+
+        document.getElementById("installBtn").addEventListener("click", () => {
+            deferredPrompt.prompt();
+        });
     </script>
 </body>
 
