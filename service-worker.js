@@ -1,13 +1,14 @@
-const cacheName = "game-cache-v1";
+const cacheName = "tic-tac-toe-cache-v1";
 
 self.addEventListener("install", function (event) {
     event.waitUntil(
         caches.open(cacheName).then(function (cache) {
             return cache.addAll([
-                "/",
+                "./",
                 "index.html",
                 "style.css",
-                "game.js",
+                "script.js",
+                "manifest.json",
                 "icon.png"
             ]);
         })
